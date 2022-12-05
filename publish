@@ -1,0 +1,5 @@
+rm -f /Volumes/NARUNGOL/FIRMWARE.CUR
+mv .pio/build/STM32G0B1RE_btt/firmware.bin /Volumes/NARUNGOL/firmware.bin
+echo "Firmware files published to drive."
+diskutil unmount /Volumes/NARUNGOL
+echo "NARUNGOL drive ejected."
