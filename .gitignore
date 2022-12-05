@@ -23,7 +23,8 @@
 # Added by NKS for forked repository.
 Marlin/Configuration_adv.h
 Marlin/Configuration.h
-
+Marlin/_Bootscreen.h
+Marlin/_Statusscreen.h
 
 # Generated files
 _Version.h
