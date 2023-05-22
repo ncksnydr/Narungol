@@ -662,9 +662,12 @@
 #endif
 
 /**
- * Use one of the PWM fans as a redundant part-cooling fan
+ * Assign more PWM fans for part cooling, synchronized with Fan 0
  */
-//#define REDUNDANT_PART_COOLING_FAN 2  // Index of the fan to sync with FAN 0.
+//#define REDUNDANT_PART_COOLING_FAN 1  // Index of the first fan to synchronize with Fan 0
+#ifdef REDUNDANT_PART_COOLING_FAN
+  //#define NUM_REDUNDANT_FANS 1        // Number of sequential fans to synchronize with Fan 0
+#endif
 
 // @section extruder
 
@@ -861,7 +864,7 @@
   #endif
 #endif
 
-#if HAS_DUAL_Y_STEPPERS
+#if HAS_Y2_STEPPER
   //#define INVERT_Y2_VS_Y_DIR        // Y2 direction signal is the opposite of Y
   //#define Y_DUAL_ENDSTOPS           // Y2 has its own endstop
   #if ENABLED(Y_DUAL_ENDSTOPS)
@@ -1113,7 +1116,7 @@
  */
 //#define FT_MOTION
 #if ENABLED(FT_MOTION)
-  #define FTM_DEFAULT_MODE         ftMotionMode_ENABLED // Default mode of fixed time control. (Enums in ft_types.h)
+  #define FTM_DEFAULT_MODE        ftMotionMode_DISABLED // Default mode of fixed time control. (Enums in ft_types.h)
   #define FTM_DEFAULT_DYNFREQ_MODE dynFreqMode_DISABLED // Default mode of dynamic frequency calculation. (Enums in ft_types.h)
   #define FTM_SHAPING_DEFAULT_X_FREQ 37.0f              // (Hz) Default peak frequency used by input shapers.
   #define FTM_SHAPING_DEFAULT_Y_FREQ 37.0f              // (Hz) Default peak frequency used by input shapers.
@@ -1149,6 +1152,8 @@
   // This value may be configured to adjust duration to consume the command buffer.
   // Try increasing this value if stepper motion is not smooth.
   #define FTM_STEPPERCMD_BUFF_SIZE 1000                 // Size of the stepper command buffers.
+
+  //#define FT_MOTION_MENU                              // Provide a MarlinUI menu to set M493 parameters.
 #endif
 
 /**
@@ -1680,6 +1685,7 @@
   //#define NO_SD_AUTOSTART                 // Remove auto#.g file support completely to save some Flash, SRAM
   //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
+  //#define ONE_CLICK_PRINT                 // Prompt to print the newest file on inserted media
   //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
 
   //#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
@@ -2877,7 +2883,7 @@
 
   #if AXIS_IS_TMC_CONFIG(X2)
     #define X2_CURRENT      X_CURRENT
-    #define X2_CURRENT_HOME X2_CURRENT
+    #define X2_CURRENT_HOME X_CURRENT_HOME
     #define X2_MICROSTEPS   X_MICROSTEPS
     #define X2_RSENSE       X_RSENSE
     #define X2_CHAIN_POS     -1
@@ -2897,7 +2903,7 @@
 
   #if AXIS_IS_TMC_CONFIG(Y2)
     #define Y2_CURRENT      Y_CURRENT
-    #define Y2_CURRENT_HOME Y2_CURRENT
+    #define Y2_CURRENT_HOME Y_CURRENT_HOME
     #define Y2_MICROSTEPS   Y_MICROSTEPS
     #define Y2_RSENSE       Y_RSENSE
     #define Y2_CHAIN_POS     -1
@@ -2917,7 +2923,7 @@
 
   #if AXIS_IS_TMC_CONFIG(Z2)
     #define Z2_CURRENT      Z_CURRENT
-    #define Z2_CURRENT_HOME Z2_CURRENT
+    #define Z2_CURRENT_HOME Z_CURRENT_HOME
     #define Z2_MICROSTEPS   Z_MICROSTEPS
     #define Z2_RSENSE       Z_RSENSE
     #define Z2_CHAIN_POS     -1
@@ -2927,7 +2933,7 @@
 
   #if AXIS_IS_TMC_CONFIG(Z3)
     #define Z3_CURRENT      Z_CURRENT
-    #define Z3_CURRENT_HOME Z3_CURRENT
+    #define Z3_CURRENT_HOME Z_CURRENT_HOME
     #define Z3_MICROSTEPS   Z_MICROSTEPS
     #define Z3_RSENSE       Z_RSENSE
     #define Z3_CHAIN_POS     -1
@@ -2937,7 +2943,7 @@
 
   #if AXIS_IS_TMC_CONFIG(Z4)
     #define Z4_CURRENT      Z_CURRENT
-    #define Z4_CURRENT_HOME Z4_CURRENT
+    #define Z4_CURRENT_HOME Z_CURRENT_HOME
     #define Z4_MICROSTEPS   Z_MICROSTEPS
     #define Z4_RSENSE       Z_RSENSE
     #define Z4_CHAIN_POS     -1
