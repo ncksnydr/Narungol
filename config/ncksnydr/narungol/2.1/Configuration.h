@@ -2362,6 +2362,24 @@
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
+#define PREHEAT_3_LABEL       "PLA"
+#define PREHEAT_3_TEMP_HOTEND 205
+#define PREHEAT_3_TEMP_BED     60
+#define PREHEAT_3_TEMP_CHAMBER 35
+#define PREHEAT_3_FAN_SPEED   255 // Value from 0 to 255
+
+#define PREHEAT_4_LABEL       "PLA 2N"
+#define PREHEAT_4_TEMP_HOTEND 210
+#define PREHEAT_4_TEMP_BED     60
+#define PREHEAT_4_TEMP_CHAMBER 35
+#define PREHEAT_4_FAN_SPEED   255 // Value from 0 to 255
+
+#define PREHEAT_5_LABEL       "PETG 2N"
+#define PREHEAT_5_TEMP_HOTEND 245
+#define PREHEAT_5_TEMP_BED     80
+#define PREHEAT_5_TEMP_CHAMBER 35
+#define PREHEAT_5_FAN_SPEED   255 // Value from 0 to 255
+
 // @section motion
 
 /**
